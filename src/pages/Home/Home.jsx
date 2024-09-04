@@ -1,10 +1,16 @@
+import Card from "../../components/Card/Card";
 import Navbar from "../../components/Navbar/Navbar";
+import { games } from '../../Data.js'
 
-export default function Home() {
+const Home = () => {
     return (
-        <section>
+        <>
             <Navbar />
-            <h1>Olá Mundo!</h1>
-        </section>
-    )
+            {games.map((game, index) => (
+                <Card {...game} key={index} />
+            ))}
+        </>
+    );
 }
+
+export default Home;

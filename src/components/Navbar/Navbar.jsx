@@ -1,7 +1,7 @@
 import logo from "../../images/logo.png"
 import { Button, ImagemLogo, InputSpace, Nav } from "./NavbarStyled"
 
-export default function Navbar() {
+const Navbar = () => {
     return (
         <>
             <Nav>
@@ -15,3 +15,5 @@ export default function Navbar() {
         </>
     )
 }
+
+export default Navbar;
