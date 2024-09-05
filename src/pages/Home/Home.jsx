@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Card from "../../components/Card/Card";
 import Navbar from "../../components/Navbar/Navbar";
 import { getAllGames } from "../../services/gamesServices.js";
@@ -5,21 +6,23 @@ import { getAllGames } from "../../services/gamesServices.js";
 import { HomeContainer } from "./HomeStyled.jsx";
 
 const Home = () => {
+    const [games, setGames] = useState([]);
 
-    let games;
     async function findAllGames() {
         const response = await getAllGames();
-        games = response.data.results;
+        const res = response.data.results;
+        setGames(res);
     }
 
-    findAllGames();
+    //findAllGames();
+    console.log(games);
 
     return (
         <>
             <Navbar />
             <HomeContainer>
-                {games.map((game, index) => (
-                    <Card {...game} key={index} />
+                {games.map((item) => (
+                    <Card {...item} key={item.id} />
                 ))}
             </HomeContainer>
         </>

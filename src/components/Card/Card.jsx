@@ -1,6 +1,6 @@
 import { CardCabecalho, CardContainer, CardFooter } from "./CardStyled";
 
-const Card = ({ title, description, cover, likes, comments }) => {
+const Card = ({ id, title, description, cover, likes, comments }) => {
     return (
         <CardContainer>
             <CardCabecalho>
@@ -14,11 +14,11 @@ const Card = ({ title, description, cover, likes, comments }) => {
             <CardFooter>
                 <div>
                     <i className="bi bi-hand-thumbs-up"></i>
-                    <span>{likes}</span>
+                    <span>{likes.length}</span>
                 </div>
                 <div>
                     <i className="bi bi-chat-right-text"></i>
-                    <span>{comments}</span>
+                    <span>{comments.length}</span>
                 </div>
             </CardFooter>
         </CardContainer>
