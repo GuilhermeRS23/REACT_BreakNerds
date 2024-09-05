@@ -5,7 +5,7 @@ export const CardContainer = styled.section`
     flex-direction: column;
     gap: 1rem;
     max-width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
     border-radius: .3rem;
     padding: 1rem;
     background-color: #FFF;
