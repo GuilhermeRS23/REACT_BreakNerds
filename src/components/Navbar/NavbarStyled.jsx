@@ -22,7 +22,7 @@ export const ImagemLogo = styled.img`
 
 export const InputSpace = styled.div`
     position: relative;
-    width: 200px;
+    width: 300px;
     display: flex;
     align-items: center;
     margin-left: 1rem;
