@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
 import Navbar from "../../components/Navbar/Navbar";
 import { getAllGames } from "../../services/gamesServices.js";
@@ -14,8 +14,9 @@ const Home = () => {
         setGames(res);
     }
 
-    //findAllGames();
-    console.log(games);
+    useEffect(() => {
+        findAllGames();
+    }, []);
 
     return (
         <>
