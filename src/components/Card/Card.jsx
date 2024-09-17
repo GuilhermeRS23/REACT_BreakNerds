@@ -1,27 +1,29 @@
 import TextLimit from "../TextLimit/TextLimit";
-import { CardCabecalho, CardContainer, CardFooter } from "./CardStyled";
+import { CardBody, CardContainer, CardFooter, CardHeader } from "./CardStyled";
 
-const Card = ({ id, title, description, cover, likes, comments, limit }) => {
+const Card = ({ id, title, description, cover, likes, comments, limit, top }) => {
     return (
         <CardContainer>
-            <CardCabecalho>
+            <CardBody>
                 <div>
-                    <h2>{title}</h2>
-                    <TextLimit description={description} limit={150} />
+                    <CardHeader top={top}>
+                        <h2>{title}</h2>
+                        <TextLimit description={description} limit={300} />
+                    </CardHeader>
+
+                    <CardFooter>
+                        <section>
+                            <i className="bi bi-hand-thumbs-up"></i>
+                            <span>{likes?.length}</span>
+                        </section>
+                        <section>
+                            <i className="bi bi-chat-right-text"></i>
+                            <span>{comments?.length}</span>
+                        </section>
+                    </CardFooter>
                 </div>
                 <img src={cover} alt={title} />
-            </CardCabecalho>
-
-            <CardFooter>
-                <div>
-                    <i className="bi bi-hand-thumbs-up"></i>
-                    <span>{likes}</span>
-                </div>
-                <div>
-                    <i className="bi bi-chat-right-text"></i>
-                    <span>{comments}</span>
-                </div>
-            </CardFooter>
+            </CardBody>
         </CardContainer>
     );
 }

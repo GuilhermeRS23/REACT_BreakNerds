@@ -1,30 +1,42 @@
 import { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
 import Navbar from "../../components/Navbar/Navbar";
-import { getAllGames } from "../../services/gamesServices.js";
-import { gamesLocal } from "../../Data.js";
-import { HomeContainer } from "./HomeStyled.jsx";
+import { getAllGames, getTopGame } from "../../services/gamesServices.js";
+import { HomeContainer, HomeHearder } from "./HomeStyled.jsx";
+//import { gamesLocal } from "../../Data.js";
 
 const Home = () => {
-    let games = gamesLocal;
-    //const [games, setGames] = useState([]);
+    //let games = gamesLocal;
+    const [games, setGames] = useState([]);
+    const [topGame, setTopGame] = useState({});
 
-    // async function findAllGames() {
-    //     const response = await getAllGames();
-    //     const res = response.data.results;
-    //     setGames(res);
-    // }
+    async function findAllGames() {
+        const responseGames = await getAllGames();
+        const resGames = responseGames.data.results;
+        setGames(resGames);
 
-    // useEffect(() => {
-    //     findAllGames();
-    // }, []);
+        const responseTop = await getTopGame();
+        const resTop = responseTop.data.game;
+        setTopGame(resTop);
+    }
+
+    useEffect(() => {
+        findAllGames();
+    }, []);
 
     return (
         <>
             <Navbar />
+            <HomeHearder>
+                <Card top="true"
+                    key={topGame.id}
+                    {...topGame}
+                />
+            </HomeHearder>
             <HomeContainer>
                 {games.map((item) => (
-                    <Card {...item} key={item.id} />
+                    <Card key={item.id}
+                        {...item} />
                 ))}
             </HomeContainer>
         </>
