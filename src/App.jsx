@@ -1,14 +1,8 @@
-import './App.css'
-import Home from './pages/Home/Home'
-import { GlobalStyled } from './GlobalStyled'
+import { Outlet } from 'react-router-dom';
+import './App.css';
 
-function App() {
-  return (
-    <>
-      <GlobalStyled />
-      <Home />
-    </>
-  )
-}
+const App = () => {
+    return <Outlet />
+};
 
-export default App
+export default App;

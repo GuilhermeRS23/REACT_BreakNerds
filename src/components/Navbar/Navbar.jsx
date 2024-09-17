@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import logo from "../../images/logo.png"
 import { Button, ImagemLogo, InputSpace, Nav } from "./NavbarStyled"
 
@@ -12,6 +13,7 @@ const Navbar = () => {
                 <ImagemLogo src={logo} alt="Logo Breaking Nerds" />
                 <Button>Entrar</Button>
             </Nav>
+            <Outlet />
         </>
     )
 }

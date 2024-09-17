@@ -26,7 +26,6 @@ const Home = () => {
 
     return (
         <>
-            <Navbar />
             <HomeHearder>
                 <Card top="true"
                     key={topGame.id}
