@@ -77,4 +77,14 @@ export const Button = styled.button`
         background-color: #064789;
     }
 
-`;
+`
+
+export const ErrorSpan = styled.span`
+    background-color: #FFAEAE;
+    color: #9E0000;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+`
