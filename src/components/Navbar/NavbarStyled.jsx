@@ -27,7 +27,7 @@ export const InputSpace = styled.div`
     align-items: center;
     margin-left: 1rem;
 
-    i {
+    button {
     position: absolute;
     top: 1;
     right: .2rem;
@@ -37,6 +37,12 @@ export const InputSpace = styled.div`
     color: #000;
     border-radius: .3rem;
     padding: .5rem;
+    transition: .3s;
+    cursor: pointer;
+    }
+
+    button:hover{
+    background-color: #435364;
     }
 
     input{
@@ -47,10 +53,9 @@ export const InputSpace = styled.div`
     border: none;
     width: 100%;
     border-radius: .3rem;
-
-    :focus{
-        border: 1px solid #064789
     }
+    input:focus{
+        border: 1px solid #064789
     }
 `;
 

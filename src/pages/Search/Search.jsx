@@ -1,7 +1,9 @@
+import { useParams } from "react-router-dom";
 import "./SearchStyled";
 
 const Search = () => {
-    return <h1>Search...</h1>
+    const { title } = useParams();
+    return <h1>{title}</h1>
 }
 
 export default Search;
