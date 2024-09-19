@@ -39,10 +39,9 @@ export const InputSpace = styled.div`
     padding: .5rem;
     transition: .3s;
     cursor: pointer;
-    }
-
-    button:hover{
-    background-color: #435364;
+    &:hover{
+        background-color: #435364;
+        }
     }
 
     input{
@@ -53,14 +52,14 @@ export const InputSpace = styled.div`
     border: none;
     width: 100%;
     border-radius: .3rem;
-    }
-    input:focus{
+    &:focus{
         border: 1px solid #064789
+        }
     }
 `;
 
 export const Button = styled.button`
-    background-color: #2667ff;
+    background-color: var(--cor-primaria);
     border: none;
     outline: none;
     font-size: 1rem;
@@ -72,8 +71,7 @@ export const Button = styled.button`
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 500;
     letter-spacing: .1rem;
-
-    :hover{
+    &:hover{
         background-color: #064789;
     }
 
