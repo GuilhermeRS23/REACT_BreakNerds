@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom';
 import { GlobalStyled } from './GlobalStyled.jsx';
-import { routes } from './routes.jsx';
+import { routes } from './Routes.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

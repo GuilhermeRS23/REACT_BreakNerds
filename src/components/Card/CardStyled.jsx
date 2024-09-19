@@ -4,7 +4,7 @@ export const CardContainer = styled.section`
     display: flex;
     gap: 1rem;
     max-width: 100%;
-    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    box-shadow: rgba(26, 30, 34, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
     border-radius: .3rem;
     background-color: #FFF;
 `
@@ -12,6 +12,10 @@ export const CardBody = styled.article`
     display: flex;
     height: 100%;
     width: 100%;
+
+    p{
+        font-family: var(--font-principal);
+    }
 
 div{
     display: flex;
@@ -46,6 +50,7 @@ export const CardHeader = styled.article`
     flex-direction: column;
     width: 100%;
     font-size: ${(props) => (props.top ? "1.5rem" : "1rem")};
+    font-family: var(--font-principal);
 
     h2{
         margin-bottom: 1rem;
