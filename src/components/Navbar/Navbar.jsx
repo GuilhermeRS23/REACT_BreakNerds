@@ -23,7 +23,7 @@ const Navbar = () => {
         const { title } = data;
         navigate(`/search/${title}`);
         reset();
-    }
+    };
 
     return (
         <>

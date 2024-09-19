@@ -11,3 +11,8 @@ export function getTopGame() {
     const response = axios.get(`${baseURL}/game/top`);
     return response;
 };
+
+export function searchGames(title) {
+    const response = axios.get(`${baseURL}/game/search?title=${title}`);
+    return response;
+};

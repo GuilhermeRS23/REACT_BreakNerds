@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
-import Navbar from "../../components/Navbar/Navbar";
 import { getAllGames, getTopGame } from "../../services/gamesServices.js";
 import { HomeContainer, HomeHearder } from "./HomeStyled.jsx";
 //import { gamesLocal } from "../../Data.js";
