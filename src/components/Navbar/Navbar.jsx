@@ -1,9 +1,10 @@
 import logo from "../../images/logo.png"
 import { Form, Link, Outlet, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Button, ErrorSpan, ImagemLogo, InputSpace, Nav } from "./NavbarStyled"
+import { ErrorSpan, ImagemLogo, InputSpace, Nav } from "./NavbarStyled"
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Button from "../Button/Button";
 
 const searchSchema = z.object({
     title: z.string()
@@ -40,7 +41,9 @@ const Navbar = () => {
                 <Link to="/">
                     <ImagemLogo src={logo} alt="Logo Breaking Nerds" />
                 </Link>
-                <Button>Entrar</Button>
+                <Link to="/auth">
+                    <Button text="Entrar" type="button" />
+                </Link>
             </Nav>
             {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
             <Outlet />

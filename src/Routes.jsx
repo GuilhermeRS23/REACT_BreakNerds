@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Error404 from "./pages/Error404/Error404";
 import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
+import Authentication from "./pages/Authentication/Authentication";
 
 export const routes = createBrowserRouter(
     [
@@ -19,6 +20,10 @@ export const routes = createBrowserRouter(
                 element: <Search />
             }
             ]
+        },
+        {
+            path: "/auth",
+            element: <Authentication />
         }
     ]
 );
