@@ -22,9 +22,6 @@ const Authentication = () => {
                     <Input type="password" placeholder="Confirme sua senha" name="password" />
                     <Button type="submit" text="Cadastrar-se" />
                 </form>
-                <form>
-
-                </form>
             </Section>
         </AuthContainer>
     )
