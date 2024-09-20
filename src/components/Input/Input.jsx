@@ -1,8 +1,8 @@
 import { InputStyled } from "./InputStyled";
 
-const Input = ({type, placeholder, name}) => {
+const Input = ({ type, placeholder, name, register }) => {
     return (
-        <InputStyled type={type} placeholder={placeholder}/>
+        <InputStyled type={type} placeholder={placeholder} {...register(name)} />
     )
 };
 
