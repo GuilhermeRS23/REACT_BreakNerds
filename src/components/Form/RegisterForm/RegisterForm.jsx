@@ -4,14 +4,20 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorSpan } from "../../Navbar/NavbarStyled";
 import { registerSchema } from "../../../schemas/registerSchema";
+import { login } from "../../../services/userServices";
 
 const RegisterForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(registerSchema)
     });
 
-    function onRegister(data) {
-        console.log(data);
+    async function onRegister(data) {
+        try {
+            const respose = await login(data);
+            console.log(respose);
+        } catch (error) {
+            console.log(data);
+        }
     };
 
     return (
