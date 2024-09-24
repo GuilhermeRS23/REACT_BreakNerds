@@ -21,7 +21,7 @@ export const Section = styled.section`
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 400px;
+    height: ${(props) => (props.type === "login" ? "422px" : "auto")};
     padding: 2rem;
     gap: 1rem;
     background-color: ${(props) => (props.type === "login" ? "white" : "var(--cor-terciaria)")};
