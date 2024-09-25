@@ -1,10 +1,13 @@
 import logo from "../../images/logo.png"
+import Button from "../Button/Button";
+import Cookies from "js-cookie";
 import { Form, Link, Outlet, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { ErrorSpan, ImagemLogo, InputSpace, Nav } from "./NavbarStyled"
+import { ErrorSpan, ImagemLogo, InputSpace, Nav, UserLoggedSpace } from "./NavbarStyled"
 import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../Button/Button";
 import { searchSchema } from "../../schemas/searchSchema";
+import { loggedUser } from "../../services/userServices";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -12,12 +15,28 @@ const Navbar = () => {
     });
 
     const navigate = useNavigate();
+    const [userLogged, setUserLogged] = useState({});
 
     function onSearch(data) {
         const { title } = data;
         navigate(`/search/${title}`);
         reset();
     };
+
+    async function findUserLogged() {
+        try {
+            const response = await loggedUser();
+            //Meu código para nào aparecer a senha
+            delete response.data.password;
+            setUserLogged(response.data)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        if (Cookies.get("token")) findUserLogged();
+    }, []);
 
     return (
         <>
@@ -34,9 +53,15 @@ const Navbar = () => {
                 <Link to="/">
                     <ImagemLogo src={logo} alt="Logo Breaking Nerds" />
                 </Link>
-                <Link to="/auth">
+                
+                {userLogged ? (
+                    <UserLoggedSpace>
+                        <h2>{userLogged.name}</h2>
+                        <Button text="Sair"></Button>
+                    </UserLoggedSpace>
+                ) : <Link to="/auth">
                     <Button text="Entrar" type="button" />
-                </Link>
+                </Link>}
             </Nav>
             {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
             <Outlet />

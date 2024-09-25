@@ -68,3 +68,21 @@ export const ErrorSpan = styled.span`
     font-size: 1rem;
     font-family: var(--font-secundaria);
 `
+
+export const UserLoggedSpace = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    gap: 1rem;
+
+    h2{
+        font-size: 1.1rem;
+        color:var(--cor--principal);
+        cursor: pointer;
+        &:hover{
+        color: var(--cor-secundaria);
+        }
+
+    } 
+`
