@@ -38,6 +38,12 @@ const Navbar = () => {
         if (Cookies.get("token")) findUserLogged();
     }, []);
 
+    function userLogout() {
+        Cookies.remove("token");
+        setUserLogged(undefined);
+        navigate("/");
+    };
+
     return (
         <>
             <Nav>
@@ -53,18 +59,20 @@ const Navbar = () => {
                 <Link to="/">
                     <ImagemLogo src={logo} alt="Logo Breaking Nerds" />
                 </Link>
-                
-                {userLogged ? (
+
+                {!userLogged ? (
+                    <Link to="/auth">
+                        <Button text="Entrar" type="button" />
+                    </Link>
+                ) :
                     <UserLoggedSpace>
                         <h2>{userLogged.name}</h2>
-                        <Button text="Sair"></Button>
+                        <Button text="Sair" type="button" onClick={userLogout}></Button>
                     </UserLoggedSpace>
-                ) : <Link to="/auth">
-                    <Button text="Entrar" type="button" />
-                </Link>}
-            </Nav>
+                }
+            </Nav >
             {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
-            <Outlet />
+            < Outlet />
         </>
     )
 }
