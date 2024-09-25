@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
 import { getAllGames, getTopGame } from "../../services/gamesServices.js";
 import { HomeContainer, HomeHearder } from "./HomeStyled.jsx";
+import Cookies from "js-cookie";
 //import { gamesLocal } from "../../Data.js";
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
 
     useEffect(() => {
         findAllGames();
+        console.log(Cookies.get("token"));
     }, []);
 
     return (

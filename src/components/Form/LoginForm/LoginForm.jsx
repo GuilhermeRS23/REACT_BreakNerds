@@ -1,17 +1,30 @@
 import Button from "../../Button/Button";
 import Input from "../../Input/Input";
+import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorSpan } from "../../Navbar/NavbarStyled";
 import { loginSchema } from "../../../schemas/loginSchema";
+import { loginUser } from "../../../services/userServices";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(loginSchema)
     });
 
-    function onLogin(data) {
-        console.log(data);
+    const navigate = useNavigate();
+
+    async function onLogin(data) {
+        try {
+            const response = await loginUser(data);
+            Cookies.set("token", response.data.token, { expires: 1 });
+            navigate("/");
+            console.log(response);
+
+        } catch (error) {
+            console.log(error);
+        };
     };
 
     return (

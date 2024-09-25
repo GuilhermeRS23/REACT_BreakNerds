@@ -1,20 +1,27 @@
 import Button from "../../Button/Button";
 import Input from "../../Input/Input";
+import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorSpan } from "../../Navbar/NavbarStyled";
 import { registerSchema } from "../../../schemas/registerSchema";
-import { login } from "../../../services/userServices";
+import { registerUser } from "../../../services/userServices";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(registerSchema)
     });
 
+    const navigate = useNavigate();
+
     async function onRegister(data) {
         try {
-            const respose = await login(data);
-            console.log(respose);
+            const response = await registerUser(data);
+            Cookies.set("token", response.data.token, { expires: 1 });
+            navigate("/");
+            console.log(response)
+
         } catch (error) {
             console.log(data);
         }
