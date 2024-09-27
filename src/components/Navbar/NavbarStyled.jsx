@@ -80,6 +80,7 @@ export const UserLoggedSpace = styled.div`
         font-size: 1.1rem;
         color:var(--cor--principal);
         cursor: pointer;
+
         &:hover{
         color: var(--cor-secundaria);
         }

@@ -7,7 +7,8 @@ import { ErrorSpan, ImagemLogo, InputSpace, Nav, UserLoggedSpace } from "./Navba
 import { zodResolver } from "@hookform/resolvers/zod";
 import { searchSchema } from "../../schemas/searchSchema";
 import { loggedUser } from "../../services/userServices";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../Context/UserContext";
 
 const Navbar = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -15,7 +16,7 @@ const Navbar = () => {
     });
 
     const navigate = useNavigate();
-    const [userLogged, setUserLogged] = useState({});
+    const { user, setUser } = useContext(UserContext);
 
     function onSearch(data) {
         const { title } = data;
@@ -28,7 +29,7 @@ const Navbar = () => {
             const response = await loggedUser();
             //Meu código para nào aparecer a senha
             delete response.data.password;
-            setUserLogged(response.data)
+            setUser(response.data)
         } catch (error) {
             console.log(error);
         }
@@ -40,7 +41,7 @@ const Navbar = () => {
 
     function userLogout() {
         Cookies.remove("token");
-        setUserLogged(undefined);
+        setUser(undefined);
         navigate("/");
     };
 
@@ -60,15 +61,17 @@ const Navbar = () => {
                     <ImagemLogo src={logo} alt="Logo Breaking Nerds" />
                 </Link>
 
-                {!userLogged ? (
+                {user ? (
+                    <UserLoggedSpace>
+                        <Link to="/profile" style={{ textDecoration: 'none' }}>
+                            <h2>{user.name}</h2>
+                        </Link>
+                        <Button text="Sair" type="button" onClick={userLogout}></Button>
+                    </UserLoggedSpace>
+                ) :
                     <Link to="/auth">
                         <Button text="Entrar" type="button" />
                     </Link>
-                ) :
-                    <UserLoggedSpace>
-                        <h2>{userLogged.name}</h2>
-                        <Button text="Sair" type="button" onClick={userLogout}></Button>
-                    </UserLoggedSpace>
                 }
             </Nav >
             {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
