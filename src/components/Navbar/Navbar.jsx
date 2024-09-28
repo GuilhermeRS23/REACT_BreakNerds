@@ -41,7 +41,7 @@ const Navbar = () => {
 
     function userLogout() {
         Cookies.remove("token");
-        setUser(undefined);
+        setUser({ });
         navigate("/");
     };
 
@@ -61,7 +61,7 @@ const Navbar = () => {
                     <ImagemLogo src={logo} alt="Logo Breaking Nerds" />
                 </Link>
 
-                {user ? (
+                {user.name ? (
                     <UserLoggedSpace>
                         <Link to="/profile" style={{ textDecoration: 'none' }}>
                             <h2>{user.name}</h2>

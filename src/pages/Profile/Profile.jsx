@@ -4,25 +4,29 @@ import { ProfileAction, ProfileAddIcon, ProfileAvatar, ProfileBackground, Profil
 
 const Profile = () => {
     const { user } = useContext(UserContext);
+
     return (
         <ProfileContainer>
-            <ProfileHeader>
-                <ProfileEditIcon>
-                    <i className="bi bi-pencil-square"></i>
-                </ProfileEditIcon>
-                <ProfileBackground src={user.background} alt="Background do Perfil" />
-                <ProfileUser>
-                    <ProfileAvatar src={user.avatar} alt={`Foto de ${user.name}`} />
-                    <h2>{user.name}</h2>
-                    <h3>@{user.username}</h3>
-                </ProfileUser>
-                <ProfileAction>
-                    <ProfileAddIcon>
-                    <i className="bi bi-plus-square"></i>
-                    </ProfileAddIcon>
-                </ProfileAction>
-            </ProfileHeader>
-        </ProfileContainer>
+            {user.name ? (
+                <ProfileHeader>
+                    <ProfileEditIcon>
+                        <i className="bi bi-pencil-square"></i>
+                    </ProfileEditIcon>
+                    <ProfileBackground src={user.background} alt="Background do Perfil" />
+                    <ProfileUser>
+                        <ProfileAvatar src={user.avatar} alt={`Foto de ${user.name}`} />
+                        <h2>{user.name}</h2>
+                        <h3>@{user.username}</h3>
+                    </ProfileUser>
+                    <ProfileAction>
+                        <ProfileAddIcon>
+                            <i className="bi bi-plus-square"></i>
+                        </ProfileAddIcon>
+                    </ProfileAction>
+                </ProfileHeader>
+            ) : <h1>Acesso Negado</h1>}
+
+        </ProfileContainer >
     )
 };
 
