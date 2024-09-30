@@ -3,7 +3,7 @@ import Button from "../Button/Button";
 import Cookies from "js-cookie";
 import { Form, Link, Outlet, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { ErrorSpan, ImagemLogo, InputSpace, Nav, UserLoggedSpace } from "./NavbarStyled"
+import { AvatarIconMini, ErrorSpan, ImagemLogo, InputSpace, Nav, UserLoggedSpace } from "./NavbarStyled"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { searchSchema } from "../../schemas/searchSchema";
 import { loggedUser } from "../../services/userServices";
@@ -41,7 +41,7 @@ const Navbar = () => {
 
     function userLogout() {
         Cookies.remove("token");
-        setUser({ });
+        setUser({});
         navigate("/");
     };
 
@@ -63,10 +63,11 @@ const Navbar = () => {
 
                 {user.name ? (
                     <UserLoggedSpace>
+                        <AvatarIconMini src={user.avatar} alt="Foto do perfil" />
                         <Link to="/profile" style={{ textDecoration: 'none' }}>
                             <h2>{user.name}</h2>
                         </Link>
-                        <Button text="Sair" type="button" onClick={userLogout}></Button>
+                        <i className="bi bi-x-square-fill" onClick={userLogout}></i>
                     </UserLoggedSpace>
                 ) :
                     <Link to="/auth">
