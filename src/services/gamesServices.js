@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const baseURL = "http://localhost:3000";
 
@@ -14,5 +15,16 @@ export function getTopGame() {
 
 export function searchGames(title) {
     const response = axios.get(`${baseURL}/game/search?title=${title}`);
+    return response;
+};
+
+export function getAllGamesByUser() {
+    const response = axios.get(`${baseURL}/game/user/games`,
+        {
+            headers:
+                { Authorization: `Bearer ${Cookies.get("token")}` }
+        }
+    );
+
     return response;
 };

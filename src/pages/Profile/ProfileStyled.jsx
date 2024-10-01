@@ -85,3 +85,20 @@ export const ProfileAddIcon = styled.i`
         font-size: 2.1rem;
     }
 `;
+
+export const ProfileGames = styled.main`
+    display:  grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    margin: 1rem auto;
+    width: 80%;
+
+    h3{
+        grid-column: 1 / -1;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--cor-principal);
+        margin-top: 1rem;
+    }
+`
