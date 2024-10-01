@@ -76,6 +76,17 @@ export const UserLoggedSpace = styled.div`
     max-width: 100%;
     gap: 1rem;
 
+    i{
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--cor-terciaria);
+        transition: all .3s ease-in-out;
+        &:hover{
+            font-size: 2rem;
+            color: red;
+        }
+    }
+
     h2{
         font-size: 1.1rem;
         color:var(--cor--principal);
@@ -86,4 +97,10 @@ export const UserLoggedSpace = styled.div`
         }
 
     } 
+`
+
+export const AvatarIconMini = styled.img`
+    width: 2rem;
+    border-radius: 50%;
+    border: solid 2px black;
 `
