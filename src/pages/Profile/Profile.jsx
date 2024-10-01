@@ -3,6 +3,7 @@ import { UserContext } from "../../Context/UserContext";
 import { ProfileAction, ProfileAddIcon, ProfileAvatar, ProfileBackground, ProfileContainer, ProfileEditIcon, ProfileGames, ProfileHeader, ProfileUser } from "./ProfileStyled";
 import { getAllGamesByUser } from "../../services/gamesServices";
 import Card from "../../components/Card/Card";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
     const { user } = useContext(UserContext);
@@ -33,9 +34,11 @@ const Profile = () => {
                             <h3>@{user.username}</h3>
                         </ProfileUser>
                         <ProfileAction>
-                            <ProfileAddIcon>
-                                <i className="bi bi-plus-square"></i>
-                            </ProfileAddIcon>
+                            <Link to={"/manage_games/add"}>
+                                <ProfileAddIcon>
+                                    <i className="bi bi-plus-square"></i>
+                                </ProfileAddIcon>
+                            </Link>
                         </ProfileAction>
                     </ProfileHeader>
 

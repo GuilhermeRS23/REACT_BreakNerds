@@ -1,8 +1,17 @@
-import { InputStyled } from "./InputStyled";
+import { InputStyled, TextArea } from "./InputStyled";
 
-const Input = ({ type, placeholder, name, register }) => {
+const Input = ({ type, placeholder, name, register, isInput = true, value }) => {
+    let inputProps = { type, placeholder, ...register(name) };
+    if (value) inputProps.value = value;
+    
     return (
-        <InputStyled type={type} placeholder={placeholder} {...register(name)} />
+        <>
+            {isInput ? (
+                <InputStyled {...inputProps} />
+            ) : (
+                <TextArea {...inputProps} />
+            )}
+        </>
     )
 };
 

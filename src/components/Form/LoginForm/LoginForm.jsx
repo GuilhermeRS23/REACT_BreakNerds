@@ -32,9 +32,11 @@ const LoginForm = () => {
             <label htmlFor="email">E-mail</label>
             <Input placeholder="Digite seu e-mail" type="email" name="email" id="email" register={register} />
             {errors.email && <ErrorSpan>{errors.email.message}</ErrorSpan>}
+            
             <label htmlFor="password">Senha</label>
             <Input placeholder="Digite sua senha" type="password" name="password" id="password" register={register} />
             {errors.password && <ErrorSpan>{errors.password.message}</ErrorSpan>}
+            
             <Button type="submit" text="Entrar" />
         </form>
     )

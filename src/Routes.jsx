@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
 import Authentication from "./pages/Authentication/Authentication";
 import Profile from "./pages/Profile/Profile";
+import ManageGames from "./pages/ManageGames/ManageGames";
 
 export const routes = createBrowserRouter(
     [
@@ -23,6 +24,10 @@ export const routes = createBrowserRouter(
             {
                 path: "/profile",
                 element: <Profile />
+            },
+            {
+                path: "/manage_games/:action",
+                element: <ManageGames />
             }
             ]
         },

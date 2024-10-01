@@ -32,15 +32,19 @@ const RegisterForm = () => {
             <label htmlFor="name">Nome</label>
             <Input type="text" placeholder="Digite seu nome" name="name" id="name" register={register} />
             {errors.name && <ErrorSpan>{errors.name.message}</ErrorSpan>}
+            
             <label htmlFor="email">E-mail</label>
             <Input type="email" placeholder="E-mail" name="email" id="email" register={register} />
             {errors.email && <ErrorSpan>{errors.email.message}</ErrorSpan>}
+            
             <label htmlFor="name">Senha</label>
             <Input type="password" placeholder="Senha" name="password" id="password" register={register} />
             {errors.password && <ErrorSpan>{errors.password.message}</ErrorSpan>}
+            
             <label htmlFor="name">Confirme sua senha</label>
             <Input type="password" placeholder="Confirme sua senha" name="confirmPassword" id="password" register={register} />
             {errors.confirmPassword && <ErrorSpan>{errors.confirmPassword.message}</ErrorSpan>}
+            
             <Button type="submit" text="Cadastrar-se" />
         </form >
     )
