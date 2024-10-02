@@ -51,3 +51,26 @@ export function getGameById(id) {
     return response;
 };
 
+export function updateGame(body, id) {
+    const response = axios.patch(`${baseURL}/game/updated/${id}`, body,
+        {
+            headers:
+                { Authorization: `Bearer ${Cookies.get("token")}` }
+        }
+    );
+
+    return response;
+};
+
+export function deleteGame(id) {
+    const response = axios.delete(`${baseURL}/game//deleted/${id}`,
+        {
+            headers:
+                { Authorization: `Bearer ${Cookies.get("token")}` }
+        }
+    );
+
+    return response;
+};
+
+

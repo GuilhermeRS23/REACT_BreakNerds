@@ -9,9 +9,16 @@ const Card = ({ id, title, description, cover, likes, comments, limit, top, acti
                 <div>
                     <CardHeader top={top}>
                         {actions && (
-                            <Link to={`/manage_games/update/${id}`}>
-                                <i className="bi bi-pencil"></i>
-                            </Link>)}
+                            <span>
+                                <Link to={`/manage_games/update/${id}`}>
+                                    <i className="bi bi-pencil"></i>
+                                </Link>
+                                <Link to={`/manage_games/delete/${id}`}>
+                                <i className="bi bi-trash-fill" style={{ color: 'red' }}></i>
+                                </Link>
+                            </span>
+                        )}
+
                         <h2>{title}</h2>
                         <TextLimit description={description} limit={300} />
                     </CardHeader>

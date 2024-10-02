@@ -63,9 +63,11 @@ const Navbar = () => {
 
                 {user.name ? (
                     <UserLoggedSpace>
-                        <AvatarIconMini src={user.avatar} alt="Foto do perfil" />
                         <Link to="/profile" style={{ textDecoration: 'none' }}>
-                            <h2>{user.name}</h2>
+                            <span>
+                                <AvatarIconMini src={user.avatar} alt="Foto do perfil" />
+                                <h2>{user.name}</h2>
+                            </span>
                         </Link>
                         <i className="bi bi-x-square-fill" onClick={userLogout}></i>
                     </UserLoggedSpace>
