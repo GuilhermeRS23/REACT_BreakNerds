@@ -39,3 +39,15 @@ export function getAllGamesByUser() {
 
     return response;
 };
+
+export function getGameById(id) {
+    const response = axios.get(`${baseURL}/game/findById/${id}`,
+        {
+            headers:
+                { Authorization: `Bearer ${Cookies.get("token")}` }
+        }
+    );
+
+    return response;
+};
+

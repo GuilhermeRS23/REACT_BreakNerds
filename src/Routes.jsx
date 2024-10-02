@@ -26,7 +26,7 @@ export const routes = createBrowserRouter(
                 element: <Profile />
             },
             {
-                path: "/manage_games/:action",
+                path: "/manage_games/:action/:gameId",
                 element: <ManageGames />
             }
             ]

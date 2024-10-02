@@ -4,12 +4,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { gameSchema } from "../../schemas/gameSchema";
 import { ErrorSpan } from "../../components/Navbar/NavbarStyled";
-import { registerNewGame } from "../../services/gamesServices";
+import { getGameById, registerNewGame } from "../../services/gamesServices";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
+import { useEffect } from "react";
 
 const ManageGames = () => {
-    const { action } = useParams();
+    const { action, id } = useParams();
     const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -25,14 +26,29 @@ const ManageGames = () => {
         }
     };
 
-    // async function editGameSubmit(data) {
-    //     try {
-    //         await editGame(data);
-    //         navigate("/profile");
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
+    async function editGameSubmit(data) {
+        //     try {
+        //         await editGame(data);
+        //         navigate("/profile");
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+    };
+
+    async function findGameById(id) {
+        try {
+            const { data } = await getGameById(id);
+            console.log(data);
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    useEffect(() => {
+        if (action === "update") {
+            findGameById(id)
+        }
+    }, []);
 
     return (
         <AddGamesContainer>

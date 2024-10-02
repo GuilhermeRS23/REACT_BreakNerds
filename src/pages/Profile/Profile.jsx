@@ -34,7 +34,7 @@ const Profile = () => {
                             <h3>@{user.username}</h3>
                         </ProfileUser>
                         <ProfileAction>
-                            <Link to={"/manage_games/add"}>
+                            <Link to={"/manage_games/add/game"}>
                                 <ProfileAddIcon>
                                     <i className="bi bi-plus-square"></i>
                                 </ProfileAddIcon>
@@ -46,6 +46,7 @@ const Profile = () => {
                         {gamesUser.length === 0 && <h3>Você ainda não cadastrou nenhum Game...</h3>}
                         {gamesUser.map((item) => (
                             <Card key={item.id}
+                                actions={true}
                                 {...item} />
                         ))}
                     </ProfileGames>

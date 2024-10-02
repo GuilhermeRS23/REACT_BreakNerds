@@ -57,4 +57,14 @@ export const CardHeader = styled.article`
         font-size: ${(props) => (props.top ? "3rem" : "1.5rem")};
         width: 100%;
     }
+
+    I{
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+        color: var(--cor-terciaria);
+        font-size: 1.1rem;
+        text-decoration: none;
+        border: none;
+    }
 `
