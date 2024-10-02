@@ -41,7 +41,7 @@ export function getAllGamesByUser() {
 };
 
 export function getGameById(id) {
-    const response = axios.get(`${baseURL}/game/findById/${id}`,
+    const response = axios.get(`${baseURL}/game/findGameById/${id}`,
         {
             headers:
                 { Authorization: `Bearer ${Cookies.get("token")}` }

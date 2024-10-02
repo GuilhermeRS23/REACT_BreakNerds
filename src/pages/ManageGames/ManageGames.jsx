@@ -10,10 +10,10 @@ import Button from "../../components/Button/Button";
 import { useEffect } from "react";
 
 const ManageGames = () => {
-    const { action, id } = useParams();
+    const { action, gameId } = useParams();
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm({
         resolver: zodResolver(gameSchema)
     });
 
@@ -35,10 +35,13 @@ const ManageGames = () => {
         //     }
     };
 
-    async function findGameById(id) {
+    async function findGameById(gameId) {
         try {
-            const { data } = await getGameById(id);
-            console.log(data);
+            const { data } = await getGameById(gameId);
+            setValue("title", data.title);
+            setValue("cover", data.cover);
+            setValue("description", data.description);
+
         } catch (error) {
             console.log(error)
         }
@@ -46,7 +49,7 @@ const ManageGames = () => {
 
     useEffect(() => {
         if (action === "update") {
-            findGameById(id)
+            findGameById(gameId)
         }
     }, []);
 
@@ -59,19 +62,19 @@ const ManageGames = () => {
                 <label htmlFor="title">Titulo</label>
                 <Input type="text" placeholder="Digite o titulo do game"
                     name="title" id="title"
-                    register={register} value={action !== "add" ? "title" : ""} />
+                    register={register} />
                 {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
 
                 <label htmlFor="cover">Capa</label>
                 <Input type="text" placeholder="Informe o link da imagem da capa"
                     name="cover" id="cover"
-                    register={register} value={action !== "add" ? "cover" : ""} />
+                    register={register} />
                 {errors.cover && <ErrorSpan>{errors.cover.message}</ErrorSpan>}
 
                 <label htmlFor="description">Descrição</label>
                 <Input type="text" placeholder="Informe a descrição desse game"
                     name="description" id="description" isInput={false}
-                    register={register} value={action !== "add" ? "description" : ""} />
+                    register={register} />
                 {errors.description && <ErrorSpan>{errors.description.message}</ErrorSpan>}
 
                 <Button type="submit" text={action === "add" ? "Cadastrar" : "Atualizar"} />
