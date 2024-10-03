@@ -76,6 +76,12 @@ export const UserLoggedSpace = styled.div`
     max-width: 100%;
     gap: 1rem;
 
+    span{
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+    }
+
     i{
         font-size: 1.5rem;
         cursor: pointer;

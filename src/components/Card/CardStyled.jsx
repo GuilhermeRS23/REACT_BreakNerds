@@ -58,11 +58,18 @@ export const CardHeader = styled.article`
         width: 100%;
     }
 
-    I{
+    span{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 1.5rem;
+    }
+
+    i{
         display: flex;
         justify-content: flex-end;
         cursor: pointer;
-        color: var(--cor-terciaria);
+        color: var(--cor-secundaria);
         font-size: 1.1rem;
         text-decoration: none;
         border: none;
