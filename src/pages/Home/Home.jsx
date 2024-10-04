@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
 import { getAllGames, getTopGame } from "../../services/gamesServices.js";
 import { HomeContainer, HomeHearder } from "./HomeStyled.jsx";
-//import { gamesLocal } from "../../Data.js";
 
 const Home = () => {
-    //let games = gamesLocal;
     const [games, setGames] = useState([]);
     const [topGame, setTopGame] = useState({});
 

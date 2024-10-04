@@ -73,4 +73,14 @@ export function deleteGame(id) {
     return response;
 };
 
+export function likeGame(body, id) {
+    const response = axios.patch(`${baseURL}/game/like/${id}`, body,
+        {
+            headers:
+                { Authorization: `Bearer ${Cookies.get("token")}` }
+        }
+    );
+
+    return response;
+};
 

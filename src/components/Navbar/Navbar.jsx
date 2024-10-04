@@ -1,14 +1,14 @@
-import logo from "../../images/logo.png"
-import Button from "../Button/Button";
-import Cookies from "js-cookie";
 import { Form, Link, Outlet, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { AvatarIconMini, ErrorSpan, ImagemLogo, InputSpace, Nav, UserLoggedSpace } from "./NavbarStyled"
+import { ErrorSpan, ImagemLogo, InputSpace, Nav } from "./NavbarStyled"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { searchSchema } from "../../schemas/searchSchema";
 import { loggedUser } from "../../services/userServices";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../Context/UserContext";
+import Cookies from "js-cookie";
+import PhofileDropDown from "../PhofileDropDown/PhofileDropDown";
+import logo from "../../images/logo.png"
 
 const Navbar = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -57,25 +57,12 @@ const Navbar = () => {
                         <input {...register("title")} type="text" placeholder="Busque por um título..." />
                     </InputSpace>
                 </Form>
+
                 <Link to="/">
                     <ImagemLogo src={logo} alt="Logo Breaking Nerds" />
                 </Link>
-
-                {user.name ? (
-                    <UserLoggedSpace>
-                        <Link to="/profile" style={{ textDecoration: 'none' }}>
-                            <span>
-                                <AvatarIconMini src={user.avatar} alt="Foto do perfil" />
-                                <h2>{user.name}</h2>
-                            </span>
-                        </Link>
-                        <i className="bi bi-x-square-fill" onClick={userLogout}></i>
-                    </UserLoggedSpace>
-                ) :
-                    <Link to="/auth">
-                        <Button text="Entrar" type="button" />
-                    </Link>
-                }
+                
+                <PhofileDropDown onClick={userLogout} />
             </Nav >
             {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
             < Outlet />

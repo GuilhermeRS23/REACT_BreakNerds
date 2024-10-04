@@ -75,3 +75,8 @@ export const CardHeader = styled.article`
         border: none;
     }
 `
+export const Autor = styled.p`
+    padding: 1rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+`

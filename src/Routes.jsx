@@ -7,6 +7,7 @@ import Authentication from "./pages/Authentication/Authentication";
 import Profile from "./pages/Profile/Profile";
 import ManageGames from "./pages/ManageGames/ManageGames";
 import Test from "./pages/Test/Test";
+import GameView from "./pages/GameView/GameView";
 
 export const routes = createBrowserRouter(
     [
@@ -29,6 +30,10 @@ export const routes = createBrowserRouter(
             {
                 path: "/manage_games/:action/:gameId",
                 element: <ManageGames />
+            },
+            {
+                path: "/game/:gameId",
+                element: <GameView />
             },
             {
                 path: "/teste_modal",

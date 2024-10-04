@@ -15,7 +15,9 @@ export const GlobalStyled = createGlobalStyle`
 *{
     margin: 0;
     padding: 0;
+    text-decoration: none;
     font-family: var(--font-titulo);
+    color: #06283D;
 }
 
 html{
