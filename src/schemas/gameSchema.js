@@ -14,3 +14,10 @@ export const gameSchema = z.object({
             message: "Digite caracteres válidos"
         }),
 });
+
+export const commentSchema = z.object({
+    message: z.string().nonempty({ message: "Campo de comentario não pode está vazio." })
+        .refine((value) => !/^\s*$/.test(value), {
+            message: "Digite caracteres válidos"
+        }),
+});

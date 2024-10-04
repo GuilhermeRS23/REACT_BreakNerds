@@ -84,3 +84,13 @@ export function likeGame(body, id) {
     return response;
 };
 
+export function addCommentGame(body, id) {
+    const response = axios.patch(`${baseURL}/game/comment/${id}`, body,
+        {
+            headers:
+                { Authorization: `Bearer ${Cookies.get("token")}` }
+        }
+    );
+
+    return response;
+};
