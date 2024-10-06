@@ -21,3 +21,13 @@ export const InputSpaceStyle = styled.div`
         height: 3rem;
     }
 `;
+
+export const CommentsConatinerStyle = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top: solid 2px var(--cor-secundaria);
+    width: 95%;
+    margin: auto;
+`
