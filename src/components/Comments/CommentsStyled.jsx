@@ -16,6 +16,7 @@ export const AvatarIcon = styled.img`
 
 export const NomeUsuarioStyle = styled.p`
     font-weight: 700;
+    font-size: .75rem;
 `
 
 export const MessageCommentStyle = styled.p`

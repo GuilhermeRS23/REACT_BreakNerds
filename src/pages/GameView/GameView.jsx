@@ -28,14 +28,13 @@ const GameView = () => {
             const resComments = resGame.comments;
 
             const allCommentsData = resComments.map(comment => ({
+                userName: comment.userName,
+                userAvatar: comment.userAvatar,
                 idComment: comment.idComment,
                 userId: comment.userId,
                 message: comment.message,
                 createdAt: comment.createdAt
             }));
-
-            // const responseAvatar = await findUserById(allCommentsData.map((item) => (item.userId)));
-            // console.log(responseAvatar);
 
             setGame(resGame);
             setGameComments(allCommentsData);
@@ -104,7 +103,8 @@ const GameView = () => {
 
             <CommentsConatinerStyle>
                 {gameComments.map((item) => (
-                    <Comments key={item.idComment} userComment={item.message} />
+                    <Comments key={item.idComment} userComment={item.message}
+                        userAvatar={item.userAvatar} userName={item.userName} />
                 ))};
             </CommentsConatinerStyle>
 
