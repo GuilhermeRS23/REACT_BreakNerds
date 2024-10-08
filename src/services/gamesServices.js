@@ -63,7 +63,7 @@ export function updateGame(body, id) {
 };
 
 export function deleteGame(id) {
-    const response = axios.delete(`${baseURL}/game//deleted/${id}`,
+    const response = axios.delete(`${baseURL}/game/deleted/${id}`,
         {
             headers:
                 { Authorization: `Bearer ${Cookies.get("token")}` }
@@ -86,6 +86,17 @@ export function likeGame(body, id) {
 
 export function addCommentGame(body, id) {
     const response = axios.patch(`${baseURL}/game/comment/${id}`, body,
+        {
+            headers:
+                { Authorization: `Bearer ${Cookies.get("token")}` }
+        }
+    );
+
+    return response;
+};
+
+export function deleteCommentGame(id, idComment, body) {
+    const response = axios.patch(`${baseURL}/game/${id}/${idComment}/delete_comment`, body,
         {
             headers:
                 { Authorization: `Bearer ${Cookies.get("token")}` }

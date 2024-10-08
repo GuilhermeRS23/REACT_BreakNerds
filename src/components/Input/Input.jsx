@@ -9,7 +9,6 @@ const Input = ({ type, placeholder, name, register, isInput = true, value: initi
         onChange: (e) => setValue(e.target.value),
         disabled
     };
-    if (value) inputProps.value = value;
 
     return (
         <>

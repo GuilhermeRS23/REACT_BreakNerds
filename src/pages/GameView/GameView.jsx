@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { addCommentGame, getGameById, likeGame } from "../../services/gamesServices";
+import { addCommentGame, deleteCommentGame, getGameById, likeGame } from "../../services/gamesServices";
 import { HomeHearder } from "../Home/HomeStyled";
 import { CardFooter } from "../../components/Card/CardStyled";
-import { UserContext } from "../../Context/UserContext";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CommentsConatinerStyle, InputSpaceStyle } from "./GameViewStyled";
@@ -13,13 +12,16 @@ import Card from "../../components/Card/Card";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Comments from "../../components/Comments/Comments";
-import { findUserById } from "../../services/userServices";
 
 const GameView = () => {
     const [game, setGame] = useState([]);
     const [gameComments, setGameComments] = useState([]);
-    const { user, setUser } = useContext(UserContext);
+    const [atualizar, setAtualizar] = useState([" "]);
     const { gameId } = useParams();
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
+        resolver: zodResolver(commentSchema)
+    });
 
     async function findGame(gameId) {
         try {
@@ -43,16 +45,22 @@ const GameView = () => {
         }
     };
 
-    console.log(gameComments.map((item) => (item.userId)));
+    let update = Math.random();
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm({
-        resolver: zodResolver(commentSchema)
-    });
-
+    async function deleteComment(idComment) {
+        try {
+            await deleteCommentGame(gameId, idComment);
+            setAtualizar(update)
+            console.log(update);
+        } catch (error) {
+            console.log(error)
+        }
+    };
 
     async function curtir(data) {
         try {
             await likeGame(data, gameId);
+            setAtualizar(update)
         } catch (error) {
             console.error(error)
             alert(error);
@@ -61,8 +69,8 @@ const GameView = () => {
 
     async function addComment(data) {
         try {
-            const response = await addCommentGame(data, gameId);
-            console.log(response);
+            await addCommentGame(data, gameId);
+            setAtualizar(update)
             reset();
         } catch (error) {
             alert(error)
@@ -71,7 +79,7 @@ const GameView = () => {
 
     useEffect(() => {
         findGame(gameId)
-    }, []);
+    }, [atualizar]);
 
     return (
         <HomeHearder>
@@ -100,13 +108,15 @@ const GameView = () => {
                     </span>
                 </InputSpaceStyle>
             </form>
-
-            <CommentsConatinerStyle>
-                {gameComments.map((item) => (
-                    <Comments key={item.idComment} userComment={item.message}
-                        userAvatar={item.userAvatar} userName={item.userName} />
-                ))};
-            </CommentsConatinerStyle>
+            {gameComments.length !== 0 ? (
+                <CommentsConatinerStyle>
+                    {gameComments.map((item) => (
+                        <Comments key={item.idComment} userComment={item.message}
+                            userAvatar={item.userAvatar} userName={item.userName}
+                            userId={item.userId} onClick={() => deleteComment(item.idComment)} />
+                    ))}
+                </CommentsConatinerStyle>
+            ) : <h1>Sem comentários --- a melhorar</h1>}
 
         </HomeHearder>
     )

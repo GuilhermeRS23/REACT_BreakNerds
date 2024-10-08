@@ -2,9 +2,20 @@ import styled from "styled-components";
 
 export const CommentsSectionStyle = styled.section`
     display: flex;
-    align-items: start;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     padding: 1rem;
+    gap: 1rem;
+
+    i{
+        color: red;
+        cursor: pointer;
+    }
+`
+
+export const CommentSpace = styled.div`
+    display: flex;
     gap: 1rem;
 `
 
