@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 
 const PhofileDropDown = ({ onClick }) => {
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -17,7 +17,7 @@ const PhofileDropDown = ({ onClick }) => {
                     {isOpen && (
                         <MenuDrop>
                             <Link to="/profile" style={{ textDecoration: 'none' }}>
-                                <h2>{user.name}</h2>
+                                <h2>Perfil</h2>
                             </Link>
                             <i className="bi bi-x-square-fill" onClick={onClick}>Sair</i>
                         </MenuDrop>

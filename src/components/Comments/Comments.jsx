@@ -9,10 +9,10 @@ const Comments = ({ userName, userComment, userAvatar, userId, onClick }) => {
         <CommentsSectionStyle>
             <CommentSpace>
                 <AvatarIcon src={userAvatar} alt="Foto do perfil" />
-                <span>
+                <div>
                     <NomeUsuarioStyle>{userName}</NomeUsuarioStyle>
                     <MessageCommentStyle>{userComment}</MessageCommentStyle>
-                </span>
+                </div>
             </CommentSpace>
             {userId === user._id && (
                 <i className="bi bi-trash" onClick={onClick}></i>

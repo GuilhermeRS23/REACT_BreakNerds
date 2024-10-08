@@ -43,10 +43,11 @@ export const AvatarIconMini = styled.img`
 export const MenuDrop = styled.div`
     position: absolute;
     top: 100%;
+    gap: 1rem;
+    padding: 1rem;
     right: 0.25px;
     width: 10rem;
-    background-color: white;
-    border: 1px solid #ccc;
+    background-color: gray;
     border-radius: 4px;
     z-index: 1;
     display: flex;

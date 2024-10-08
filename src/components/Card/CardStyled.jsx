@@ -45,6 +45,8 @@ export const CardFooter = styled.article`
     }
 `
 
+
+
 export const CardHeader = styled.article`
     display: flex;
     flex-direction: column;
