@@ -30,4 +30,8 @@ export const CommentsConatinerStyle = styled.div`
     border-top: solid 2px var(--cor-secundaria);
     width: 95%;
     margin: auto;
+
+    h2{
+        padding: 1rem;
+    }
 `

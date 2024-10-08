@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { addCommentGame, deleteCommentGame, getGameById, likeGame } from "../../services/gamesServices";
 import { HomeHearder } from "../Home/HomeStyled";
@@ -12,11 +12,14 @@ import Card from "../../components/Card/Card";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Comments from "../../components/Comments/Comments";
+import { UserContext } from "../../Context/UserContext";
 
 const GameView = () => {
-    const [game, setGame] = useState([]);
+    const [game, setGame] = useState(null);
     const [gameComments, setGameComments] = useState([]);
+    const [gameLikes, setGameLikes] = useState([]);
     const [atualizar, setAtualizar] = useState([" "]);
+    const { user } = useContext(UserContext);
     const { gameId } = useParams();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -28,6 +31,7 @@ const GameView = () => {
             const responseGame = await getGameById(gameId);
             const resGame = responseGame.data;
             const resComments = resGame.comments;
+            const resLikes = resGame.likes;
 
             const allCommentsData = resComments.map(comment => ({
                 userName: comment.userName,
@@ -38,20 +42,26 @@ const GameView = () => {
                 createdAt: comment.createdAt
             }));
 
+            const isLike = resLikes.map(e => ({
+                userId: e.userId
+            }));
+
             setGame(resGame);
             setGameComments(allCommentsData);
+            setGameLikes(isLike);
+
         } catch (error) {
             alert(error)
         }
     };
 
     let update = Math.random();
+    const temCurtida = gameLikes.find((e) => e.userId === user._id);
 
     async function deleteComment(idComment) {
         try {
             await deleteCommentGame(gameId, idComment);
             setAtualizar(update)
-            console.log(update);
         } catch (error) {
             console.log(error)
         }
@@ -89,7 +99,8 @@ const GameView = () => {
 
             <CardFooter>
                 <section onClick={() => curtir(game)}>
-                    <i className="bi bi-hand-thumbs-up"></i>
+                    {!temCurtida ? (<i className="bi bi-hand-thumbs-up"></i>) :
+                        <i className="bi bi-hand-thumbs-up-fill"></i>}
                     <span>Gostei</span>
                 </section>
                 <section>
@@ -110,6 +121,7 @@ const GameView = () => {
             </form>
             {gameComments.length !== 0 ? (
                 <CommentsConatinerStyle>
+                    <h2>Comentários {gameComments.length}</h2>
                     {gameComments.map((item) => (
                         <Comments key={item.idComment} userComment={item.message}
                             userAvatar={item.userAvatar} userName={item.userName}
