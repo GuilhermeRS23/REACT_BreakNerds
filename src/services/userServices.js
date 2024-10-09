@@ -40,3 +40,15 @@ function generateUsername(name) {
 
     return `${nameWithoutSpaces}_${randonNumber}`
 };
+
+
+export function updateUser(body, id) {
+    const response = axios.patch(`${baseURL}/user/update/${id}`, body,
+        {
+            headers:
+                { Authorization: `Bearer ${Cookies.get("token")}` }
+        }
+    );
+
+    return response;
+};

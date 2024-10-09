@@ -1,9 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ErrorSpan } from "../../components/Navbar/NavbarStyled";
 import { ProfileEditContainer } from "./ManagePhofileStyled";
-import { findUserById } from "../../services/userServices";
+import { findUserById, updateUser } from "../../services/userServices";
 import { useEffect } from "react";
 import { userSchema } from "../../schemas/userSchema";
 import Button from "../../components/Button/Button";
@@ -11,7 +11,7 @@ import Input from "../../components/Input/Input";
 
 const ManagePhofile = () => {
     const { userId } = useParams();
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm({
         resolver: zodResolver(userSchema)
@@ -28,9 +28,16 @@ const ManagePhofile = () => {
         }
     };
 
-    async function editPhofileSubmit() {
-        console.log(" Foi")
+
+    async function editPhofileSubmit(data) {
+        try {
+            await updateUser(data, userId);
+            navigate("/profile");
+        } catch (error) {
+            console.log(error);
+        }
     };
+
 
     useEffect(() => {
         userById(userId)

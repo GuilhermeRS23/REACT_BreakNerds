@@ -30,6 +30,7 @@ const ManageGames = () => {
         try {
             await updateGame(data, gameId);
             navigate("/profile");
+            console.log(data)
         } catch (error) {
             console.log(error);
         }
