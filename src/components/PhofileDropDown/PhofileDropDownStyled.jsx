@@ -16,8 +16,7 @@ export const UserLoggedSpace = styled.div`
         color: var(--cor-terciaria);
         transition: all .3s ease-in-out;
         &:hover{
-            font-size: 2rem;
-            color: red;
+            color: var(--cor--principal);
         }
     }
 

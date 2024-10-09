@@ -13,13 +13,16 @@ const PhofileDropDown = ({ onClick }) => {
         <>
             {user.name ? (
                 <UserLoggedSpace>
-                    <AvatarIconMini src={user.avatar} alt="Foto do perfil" onClick={toggleDropdown} />
+                    <span onClick={toggleDropdown}>
+                        <AvatarIconMini src={user.avatar} alt="Foto do perfil" />
+                        <i className="bi bi-caret-down-fill"></i>
+                    </span>
                     {isOpen && (
                         <MenuDrop>
                             <Link to="/profile" style={{ textDecoration: 'none' }}>
                                 <h2>Perfil</h2>
                             </Link>
-                            <i className="bi bi-x-square-fill" onClick={onClick}>Sair</i>
+                            <i className="bi bi-box-arrow-in-left" onClick={onClick}> Sair</i>
                         </MenuDrop>
                     )}
                 </UserLoggedSpace>) :

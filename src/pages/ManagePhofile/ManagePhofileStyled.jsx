@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AddGamesContainer = styled.section`
+export const ProfileEditContainer = styled.section`
     width: 60%;
     margin: 1rem auto;
     display: flex;
@@ -10,7 +10,7 @@ export const AddGamesContainer = styled.section`
     background-color: #FFF;
     border-radius: .3rem;
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-
+    
     h2{
         margin-top: 1rem;
         color: var(--cor-terciaria);

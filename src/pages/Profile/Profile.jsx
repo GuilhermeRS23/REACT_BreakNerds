@@ -25,7 +25,9 @@ const Profile = () => {
                 <ProfileContainer>
                     <ProfileHeader>
                         <ProfileEditIcon>
+                            <Link to={`/manage_phofile/${user._id}`}>
                             <i className="bi bi-pencil-square"></i>
+                            </Link>
                         </ProfileEditIcon>
                         <ProfileBackground src={user.background} alt="Background do Perfil" />
                         <ProfileUser>
