@@ -8,7 +8,7 @@ export const Nav = styled.nav`
     padding: 1rem;
     /* position: fixed;
     top: 0; */
-    background-color: #FFF;
+    background-color: var(--cor-secundaria);
     z-index: 1;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 `;
@@ -22,15 +22,16 @@ export const ImagemLogo = styled.img`
 
 export const InputSpace = styled.div`
     position: relative;
-    width: 300px;
+    width: 350px;
     display: flex;
-    align-items: center;
+    align-items: end;
     margin-left: 1rem;
 
     button {
     position: absolute;
-    top: 1;
-    right: .2rem;
+    text-align: center;
+    right: .1px;
+    font-size: 1.1rem;
     z-index: 10;
     border: none;
     background-color:  #EBF2FA;

@@ -85,7 +85,7 @@ const GameView = () => {
         <HomeHearder>
             {game && (
                 <>
-                    <Card top="true" key={game.id} {...game} text={`Criado por: ${game.username}`} />
+                    <Card top="true" icons="false" limit="1000" key={game.id} {...game} text={`Criado por: ${game.username}`} />
                     <LikeSpanStyled>
                         <section onClick={curtir}>
                             <i className={`bi ${temCurtida ? "bi-hand-thumbs-up-fill" : "bi-hand-thumbs-up"}`}></i>

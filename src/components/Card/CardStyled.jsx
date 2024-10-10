@@ -70,7 +70,7 @@ export const CardHeader = styled.article`
     i{
         display: flex;
         justify-content: flex-end;
-        cursor: pointer;
+        cursor: ${(props) => (props.top ? "pointer" : "default")};
         color: var(--cor-secundaria);
         font-size: 1.1rem;
         text-decoration: none;

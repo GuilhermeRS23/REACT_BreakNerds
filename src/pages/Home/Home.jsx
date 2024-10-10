@@ -24,14 +24,14 @@ const Home = () => {
     return (
         <>
             <HomeHearder>
-                <Card top="true"
+                <Card icons="true" top="true"
                     key={topGame.id}
                     {...topGame}
                 />
             </HomeHearder>
             <HomeContainer>
                 {games.map((item) => (
-                    <Card key={item.id}
+                    <Card icons="true" key={item.id}
                         {...item} />
                 ))}
             </HomeContainer>

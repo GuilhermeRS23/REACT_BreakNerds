@@ -49,6 +49,10 @@ const Navbar = () => {
     return (
         <>
             <Nav>
+                <Link to="/">
+                    <ImagemLogo src={logo} alt="Logo Breaking Nerds" />
+                </Link>
+
                 <Form onSubmit={handleSubmit(onSearch)}>
                     <InputSpace>
                         <button type="submit">
@@ -59,16 +63,11 @@ const Navbar = () => {
                     </InputSpace>
                 </Form>
 
-                <Link to="/">
-                    <ImagemLogo src={logo} alt="Logo Breaking Nerds" />
-                </Link>
 
                 <PhofileDropDown onClick={userLogout} />
             </Nav >
             {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
             < Outlet />
-            
-            <Footer />
         </>
     )
 }

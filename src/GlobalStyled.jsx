@@ -12,12 +12,21 @@ export const GlobalStyled = createGlobalStyle`
     --font-secundaria: "Ubuntu", sans-serif;
 }
 
+
+a{
+    color: #06283D;
+}
+
+a:visited{
+    color: var(--cor-primaria);
+}
+
+
 *{
     margin: 0;
     padding: 0;
     text-decoration: none;
     font-family: var(--font-titulo);
-    color: #06283D;
 }
 
 html{
@@ -27,11 +36,13 @@ html{
 
 body{
     max-width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--cor-azul-claro);
+    flex: 1;
 }
 
 footer{
     margin-top: auto;
+    width: 100%;
 }
 `
