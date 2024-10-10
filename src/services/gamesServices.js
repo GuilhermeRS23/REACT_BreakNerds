@@ -15,7 +15,7 @@ export function registerNewGame(body) {
 };
 
 export function getAllGames() {
-    const response = axios.get(`${baseURL}/game`);
+    const response = axios.get(`${baseURL}/game?limit=10`);
     return response;
 };
 

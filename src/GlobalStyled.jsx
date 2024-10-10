@@ -21,12 +21,17 @@ export const GlobalStyled = createGlobalStyle`
 }
 
 html{
-    width: auto;
+    height: 100%;
+    min-height: 100%;
 }
 
 body{
     max-width: 100vw;
     height: 100vh;
     background-color: var(--cor-azul-claro);
+}
+
+footer{
+    margin-top: auto;
 }
 `

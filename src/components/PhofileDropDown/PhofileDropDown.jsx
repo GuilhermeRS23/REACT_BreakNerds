@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../../Context/UserContext";
-import { AvatarIconMini, MenuDrop, UserLoggedSpace } from "./PhofileDropDownStyled";
+import { AvatarIconMini, IconSair, MenuDrop, UserLoggedSpace } from "./PhofileDropDownStyled";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 
@@ -19,10 +19,11 @@ const PhofileDropDown = ({ onClick }) => {
                     </span>
                     {isOpen && (
                         <MenuDrop>
+                            <h2>{user.name}</h2>
                             <Link to="/profile" style={{ textDecoration: 'none' }}>
-                                <h2>Perfil</h2>
+                                <h2>Meu Perfil</h2>
                             </Link>
-                            <i className="bi bi-box-arrow-in-left" onClick={onClick}> Sair</i>
+                            <IconSair className="bi bi-box-arrow-in-left" onClick={onClick}> Sair</IconSair>
                         </MenuDrop>
                     )}
                 </UserLoggedSpace>) :

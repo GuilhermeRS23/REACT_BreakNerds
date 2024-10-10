@@ -9,6 +9,7 @@ import { UserContext } from "../../Context/UserContext";
 import Cookies from "js-cookie";
 import PhofileDropDown from "../PhofileDropDown/PhofileDropDown";
 import logo from "../../images/logo.png"
+import Footer from "../Footer/Footer";
 
 const Navbar = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -61,11 +62,13 @@ const Navbar = () => {
                 <Link to="/">
                     <ImagemLogo src={logo} alt="Logo Breaking Nerds" />
                 </Link>
-                
+
                 <PhofileDropDown onClick={userLogout} />
             </Nav >
             {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
             < Outlet />
+            
+            <Footer />
         </>
     )
 }
