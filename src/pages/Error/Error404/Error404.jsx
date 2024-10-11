@@ -1,4 +1,4 @@
-import imgError404 from "../../images/404-page-not-found.svg";
+import imgError404 from "../../../images/404-page-not-found.svg";
 import { useRouteError } from "react-router-dom";
 import { PageNotfoundBody, PageNotfoundConatiner } from "./Error404Styled";
 

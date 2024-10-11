@@ -1,7 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const baseURL = "http://localhost:3000";
+//const baseURL = "http://localhost:3000";
+const baseURL = "https://api-breakinnerdsv2-0.onrender.com";
 
 export const registerUser = (data) => {
     delete data.confirmPassword;

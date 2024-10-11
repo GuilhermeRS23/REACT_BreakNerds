@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Error404 from "./pages/Error404/Error404";
 import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
 import Authentication from "./pages/Authentication/Authentication";
@@ -9,6 +8,7 @@ import ManageGames from "./pages/ManageGames/ManageGames";
 import Test from "./pages/Test/Test";
 import GameView from "./pages/GameView/GameView";
 import ManagePhofile from "./pages/ManagePhofile/ManagePhofile";
+import Error404 from "./pages/Error/Error404/Error404";
 
 export const routes = createBrowserRouter(
     [

@@ -5,13 +5,14 @@ import { addCommentGame, deleteCommentGame, getGameById, likeGame } from "../../
 import { HomeHearder } from "../Home/HomeStyled";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CommentsConatinerStyle, InputSpaceStyle, LikeSpanStyled } from "./GameViewStyled";
+import { CommentsConatinerStyle, EmptyComment, InputSpaceStyle, LikeSpanStyled } from "./GameViewStyled";
 import { ErrorSpan } from "../../components/Navbar/NavbarStyled";
 import { commentSchema } from "../../schemas/gameSchema";
 import Card from "../../components/Card/Card";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Comments from "../../components/Comments/Comments";
+import Error401 from "../Error/Error401/Error401";
 
 const GameView = () => {
     const [game, setGame] = useState(null);
@@ -42,7 +43,7 @@ const GameView = () => {
             setGameLikes(isLike);
 
         } catch (error) {
-            alert(error)
+            alert(error.response.data.message)
         }
     }, []);
 
@@ -82,45 +83,49 @@ const GameView = () => {
     const temCurtida = gameLikes.some((e) => e.userId === user._id);
 
     return (
-        <HomeHearder>
-            {game && (
-                <>
-                    <Card top="true" icons="false" limit="1000" key={game.id} {...game} text={`Criado por: ${game.username}`} />
-                    <LikeSpanStyled>
-                        <section onClick={curtir}>
-                            <i className={`bi ${temCurtida ? "bi-hand-thumbs-up-fill" : "bi-hand-thumbs-up"}`}></i>
-                            <span>Gostei</span>
-                        </section>
-                        <section>
-                            <i className="bi bi-chat-right-text"></i>
-                            <span>Comentar</span>
-                        </section>
-                    </LikeSpanStyled>
-                </>
-            )}
+        <>
+            {game ? (
+                <HomeHearder>
+                    <>
+                        <Card top="true" icons="false" limit="1000" key={game.id} {...game} text={`Criado por: ${game.username}`} />
+                        <LikeSpanStyled>
+                            <section onClick={curtir}>
+                                <i className={`bi ${temCurtida ? "bi-hand-thumbs-up-fill" : "bi-hand-thumbs-up"}`}></i>
+                                <span>Gostei</span>
+                            </section>
+                            <section>
+                                <i className="bi bi-chat-right-text"></i>
+                                <span>Comentar</span>
+                            </section>
+                        </LikeSpanStyled>
+                    </>
 
-            <form onSubmit={handleSubmit(addComment)}>
-                <InputSpaceStyle>
-                    <Input type="textarea" placeholder="Deixe seu comentário..." name="message" register={register} />
-                    <Button type="Submit" text="Comentar" />
-                    {errors.message && <ErrorSpan>{errors.message.message}</ErrorSpan>}
-                </InputSpaceStyle>
-            </form>
+                    <form onSubmit={handleSubmit(addComment)}>
+                        <InputSpaceStyle>
+                            <Input type="textarea" placeholder="Deixe seu comentário..." name="message" register={register} />
+                            <Button type="Submit" text="Comentar" />
+                            {errors.message && <ErrorSpan>{errors.message.message}</ErrorSpan>}
+                        </InputSpaceStyle>
+                    </form>
 
-            {gameComments.length > 0 ? (
-                <CommentsConatinerStyle>
-                    <h2><span>{gameComments.length}</span>
-                        {gameComments.length > 1 ? "Comentários" : "Comentário"}</h2>
-                    {gameComments.map((item) => (
-                        <Comments key={item.idComment} userComment={item.message}
-                            userAvatar={item.userAvatar} userName={item.userName}
-                            userId={item.userId} onClick={() => deleteComment(item.idComment)} />
-                    ))}
-                </CommentsConatinerStyle>
-            ) : (
-                <h1>Sem comentários --- a melhorar</h1>
-            )}
-        </HomeHearder>
+                    {gameComments.length > 0 ? (
+                        <CommentsConatinerStyle>
+                            <h2><span>{gameComments.length}</span>
+                                {gameComments.length > 1 ? "Comentários" : "Comentário"}</h2>
+                            {gameComments.map((item) => (
+                                <Comments key={item.idComment} userComment={item.message}
+                                    userAvatar={item.userAvatar} userName={item.userName}
+                                    userId={item.userId} onClick={() => deleteComment(item.idComment)} />
+                            ))}
+                        </CommentsConatinerStyle>
+                    ) : (
+                        <EmptyComment>
+                            <h1>Sem comentários</h1>
+                        </EmptyComment>
+                    )}
+                </HomeHearder>
+            ) : (<Error401 />)}
+        </>
     );
 };
 

@@ -54,3 +54,9 @@ export const CommentsConatinerStyle = styled.div`
         padding: 1rem;
     }
 `
+
+export const EmptyComment = styled.div`
+    text-align: center;
+    padding: 2rem;
+    color: gray;
+`
