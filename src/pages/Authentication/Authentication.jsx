@@ -1,18 +1,36 @@
+import { Link, useParams } from "react-router-dom";
+import { AuthContainer, ImgDelogin, SectionForm } from "./AuthenticationStyled";
+import telaDeLogin from "../../images/730_generated.png"
+import telaDeRegistro from "../../images/729_generated.png";
 import LoginForm from "../../components/Form/LoginForm/LoginForm";
 import RegisterForm from "../../components/Form/RegisterForm/RegisterForm";
-import { AuthContainer, Section } from "./AuthenticationStyled";
 
 const Authentication = () => {
+    const { action } = useParams();
+
     return (
         <AuthContainer>
-            <Section type="login">
-                <h2>Entrar</h2>
-                <LoginForm />
-            </Section>
-            <Section type="register">
-                <h2>Cadastrar-se</h2>
-                <RegisterForm />
-            </Section>
+            {action === "login" ? (
+                <>
+                    <SectionForm type="login">
+                        <h2>Entrar</h2>
+                        <LoginForm />
+                        <Link to="/auth/register">
+                            <p>Não tem login? Crie sua conta</p>
+                        </Link>
+                    </SectionForm>
+                    <ImgDelogin src={telaDeLogin} alt="Login" />
+                </>
+            ) : (
+                <>
+                    <SectionForm type="register">
+                        <h2>Cadastrar-se</h2>
+                        <RegisterForm />
+                    </SectionForm>
+                    <ImgDelogin src={telaDeRegistro} alt="Register" />
+                </>
+
+            )}
         </AuthContainer>
     )
 };

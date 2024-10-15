@@ -27,7 +27,7 @@ const PhofileDropDown = ({ onClick }) => {
                         </MenuDrop>
                     )}
                 </UserLoggedSpace>) :
-                <Link to="/auth">
+                <Link to="/auth/login">
                     <Button text="Entrar" type="button" />
                 </Link>
             }

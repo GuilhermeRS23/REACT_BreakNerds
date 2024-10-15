@@ -5,10 +5,10 @@ import Search from "./pages/Search/Search";
 import Authentication from "./pages/Authentication/Authentication";
 import Profile from "./pages/Profile/Profile";
 import ManageGames from "./pages/ManageGames/ManageGames";
-import Test from "./pages/Test/Test";
 import GameView from "./pages/GameView/GameView";
 import ManagePhofile from "./pages/ManagePhofile/ManagePhofile";
 import Error404 from "./pages/Error/Error404/Error404";
+import Test from "./pages/Test/Test";
 
 export const routes = createBrowserRouter(
     [
@@ -47,7 +47,7 @@ export const routes = createBrowserRouter(
             ]
         },
         {
-            path: "/auth",
+            path: "/auth/:action",
             element: <Authentication />
         }
     ]
