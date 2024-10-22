@@ -63,7 +63,6 @@ const Navbar = () => {
                     </InputSpace>
                 </Form>
 
-
                 <PhofileDropDown onClick={userLogout} />
             </Nav >
             {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
